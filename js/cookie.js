@@ -26,6 +26,7 @@ function getCookie(cname) {
 function checkCookieAndRedirect() {
     var deviceType = getCookie("deviceType");
     document.getElementById("deviceDetection").innerHTML = "Detected device : " + deviceType;
+    displayAllSizes();
     if (deviceType !== "") {
         if (deviceType === "mobile") {
             redirectToMobileHomePage();
@@ -47,4 +48,13 @@ function redirectToMobileHomePage() {
 function redirectToDesktopHomePage() {
     setCookie("deviceType", "desktop", 30);
     window.location = "../homepage.html";
+}
+
+function displayAllSizes() {
+    document.getElementById("deviceDetection").innerHTML += "<br/>screen.width : " + screen.width;
+    document.getElementById("deviceDetection").innerHTML += "<br/>screen.availWidth : " + screen.availWidth;
+    document.getElementById("deviceDetection").innerHTML += "<br/>window.outerWidth : " + window.outerWidth;
+    document.getElementById("deviceDetection").innerHTML += "<br/>window.innerWidth : " + window.innerWidth;
+    document.getElementById("deviceDetection").innerHTML += "<br/>document.body.clientWidth : " + document.body.clientWidth;
+    document.getElementById("deviceDetection").innerHTML += "<br/>document.body.offsetWidth : " + document.body.offsetWidth;                      
 }
